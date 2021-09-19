@@ -22,6 +22,7 @@ rpm: pkg-release packmodules ## Build rpm
 
 
 pkg-release: ## Generate the release file
+	@rm -f pkg-release
 	@git describe --tags --dirty --always > pkg-release
 	@echo Using release: `cat pkg-release`
 
