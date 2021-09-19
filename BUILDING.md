@@ -1,27 +1,31 @@
 # Start a LXD image with centos8
 
-    lxc launch images:centos/8/amd64
+    CENTOS8: lxc launch images:centos/8/amd64
+    
+    DEBIAN/UBUNTU: lxc launch ubuntu:focal
 
-# Setup build env for RPM
+## Setup build env for RPM
 Centos: https://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
 
-## Install rpm-build
-    
+## Setup build env for DEB
+### Debian:
+    apt-get install build-essential
+
+### Centos8
+
+    # basics
     yum -y install rpm-build redhat-rpm-config git 
-
-## Install epel
-https://www.cyberciti.biz/faq/how-to-enable-and-install-epel-repo-on-centos-8-x/
-
+    # elep
     yum -y install epel-release
     yum -y repolist
     yum -y install 'dnf-command(config-manager)'
     yum -y update
+    # Lmod
     dnf -y --enablerepo=powertools install lua-filesystem
     dnf -y --enablerepo=powertools install lua-posix
     dnf -y --enablerepo=powertools install Lmod
-
-source /etc/profile.d/00-modulepath.sh
-source /etc/profile.d/modules.sh
+    source /etc/profile.d/00-modulepath.sh
+    source /etc/profile.d/modules.sh
 
 ## LMOD
 
