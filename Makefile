@@ -1,25 +1,38 @@
 OSNAME := $(shell cat /etc/os-release | grep ^ID=| cut -d "=" -f 2)
-$(info === Detected OS: $(OSNAME) ===)
+$(info === Detected Linux distro: $(OSNAME) ===)
 
-deb: ## Build deb
+#
+# Build packages (.deb, .rpm)
+#
+# RPM Namescheme [name]-[version]-[release].[arch].rpm
+#
+# The release number comes from the git commit hash
+#
+#
+
+packmodules:
+	@tar -zcvf rpmbuild/SOURCES/modules.tar.gz modules
+
+deb: releasefile ## Build deb
 	@echo building deb
 	@debuild
 
+rpm: releasefile packmodules ## Build rpm
+        # _pkgrel is a custom macro used by the .spec file to set the release
+	@rpmbuild --define '_pkgrel $(shell cat pkg-release)' --define '_topdir /root/my-modules/rpmbuild' -bb rpmbuild/SPECS/my-modules.spec
 
-rpm: ## build rpm
-	@rpmbuild --define '_topdir /root/my-modules/rpmbuild' -bb rpmbuild/SPECS/my-modules.spec
 
-
-version: ## Generate version file
-	@git describe --tags --dirty --always > version
-	@echo Building version: `cat version`
+releasefile: ## Generate the release file
+	@git describe --tags --dirty --always | tr '-' '_' > pkg-release
+	@echo Building version: `cat pkg-release`
 
 install: 
 	@echo installing
 	@install -d $(DESTDIR)$(prefix)
 
 clean:
-	@rm version
+	@rm pkg-release
+	@rm rpmbuild/SOURCES/modules.tar.gz
 
 # Display target comments in 'make help'
 help: 

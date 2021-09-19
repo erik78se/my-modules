@@ -1,6 +1,6 @@
 Name:           my-modules
 Version:        1
-Release:        0%{?dist}
+Release:        %{?_pkgrel}%{?dist}
 Summary:        Lmod modules
 
 Group:          Utilities
@@ -25,8 +25,8 @@ echo "install"
 rm -rf $RPM_BUILD_ROOT
 
 install -m 0755 -d $RPM_BUILD_ROOT/usr/share/modulefiles/
-# install -m 0644 modules/polkadot/1.0.lua $RPM_BUILD_ROOT/usr/share/modulefiles/polkadot/1.0.lua
 cp -r * $RPM_BUILD_ROOT/usr/share/modulefiles/
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT

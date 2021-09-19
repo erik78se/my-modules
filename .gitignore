@@ -3,9 +3,10 @@ rpmbuild/BUILD
 rpmbuild/RPMS
 rpmbuild/SRPM
 version
-
+rpmbuild/SOURCES/modules.tar.gz
 debian/debhelper-build-stamp
 debian/files
 debian/.debhelper
 debian/my-module.substvars
 debian/my-module
+pkg-release
