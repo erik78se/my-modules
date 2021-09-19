@@ -2,7 +2,7 @@ rpmbuild/BUILDROOT
 rpmbuild/BUILD
 rpmbuild/RPMS
 rpmbuild/SRPM
-
+version
 
 debian/debhelper-build-stamp
 debian/files
