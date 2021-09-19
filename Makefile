@@ -12,7 +12,6 @@ packmodules:
 
 
 deb: pkg-release ## Build deb
-	@echo building deb
 	@debuild --build=binary 
 
 
@@ -23,7 +22,6 @@ rpm: pkg-release packmodules ## Build rpm
 
 pkg-release: ## Generate the release file
 	@git describe --tags --dirty --always > pkg-release
-	@echo Using release: `cat pkg-release`
 
 
 install: pkg-release
