@@ -11,18 +11,18 @@ packmodules:
 	@tar -zcvf rpmbuild/SOURCES/modules.tar.gz modules
 
 
-deb: releasefile ## Build deb
+deb: pkg-release ## Build deb
 	@echo building deb
-	@debuild
+	@debuild --build=binary 
 
 
-rpm: releasefile packmodules ## Build rpm
+rpm: pkg-release packmodules ## Build rpm
         # _pkgrel is a custom macro used by the .spec file to set the release
-	@rpmbuild --define '_pkgrel $(shell cat pkg-release)' --define '_topdir /root/my-modules/rpmbuild' -bb rpmbuild/SPECS/my-modules.spec
+	@rpmbuild --define '_pkgrel $(shell cat pkg-release | tr '-' '_')' --define '_topdir /root/my-modules/rpmbuild' -bb rpmbuild/SPECS/my-modules.spec
 
 
-releasefile: ## Generate the release file
-	@git describe --tags --dirty --always | tr '-' '_' > pkg-release
+pkg-release: ## Generate the release file
+	@git describe --tags --dirty --always > pkg-release
 	@echo Using release: `cat pkg-release`
 
 
@@ -32,7 +32,6 @@ install:
 
 
 clean:
-	@rm -f pkg-release
 	@rm -f rpmbuild/SOURCES/modules.tar.gz
 
 # Display target comments in 'make help'

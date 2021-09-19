@@ -10,3 +10,4 @@ debian/.debhelper
 debian/my-module.substvars
 debian/my-module
 pkg-release
+debian/my-module.debhelper.log
