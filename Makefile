@@ -1,6 +1,3 @@
-# OSNAME := $(shell cat /etc/os-release | grep ^ID=| cut -d "=" -f 2)
-# $(info === Detected Linux distro: $(OSNAME) ===)
-
 #
 # Build packages (.deb, .rpm)
 #
@@ -26,7 +23,7 @@ rpm: releasefile packmodules ## Build rpm
 
 releasefile: ## Generate the release file
 	@git describe --tags --dirty --always | tr '-' '_' > pkg-release
-	@echo Building version: `cat pkg-release`
+	@echo Using release: `cat pkg-release`
 
 
 install: 
