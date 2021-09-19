@@ -1,5 +1,5 @@
-OSNAME := $(shell cat /etc/os-release | grep ^ID=| cut -d "=" -f 2)
-$(info === Detected Linux distro: $(OSNAME) ===)
+# OSNAME := $(shell cat /etc/os-release | grep ^ID=| cut -d "=" -f 2)
+# $(info === Detected Linux distro: $(OSNAME) ===)
 
 #
 # Build packages (.deb, .rpm)
@@ -13,9 +13,11 @@ $(info === Detected Linux distro: $(OSNAME) ===)
 packmodules:
 	@tar -zcvf rpmbuild/SOURCES/modules.tar.gz modules
 
+
 deb: releasefile ## Build deb
 	@echo building deb
 	@debuild
+
 
 rpm: releasefile packmodules ## Build rpm
         # _pkgrel is a custom macro used by the .spec file to set the release
@@ -26,13 +28,15 @@ releasefile: ## Generate the release file
 	@git describe --tags --dirty --always | tr '-' '_' > pkg-release
 	@echo Building version: `cat pkg-release`
 
+
 install: 
 	@echo installing
 	@install -d $(DESTDIR)$(prefix)
 
+
 clean:
-	@rm pkg-release
-	@rm rpmbuild/SOURCES/modules.tar.gz
+	@rm -f pkg-release
+	@rm -f rpmbuild/SOURCES/modules.tar.gz
 
 # Display target comments in 'make help'
 help: 
