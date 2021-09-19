@@ -1,0 +1,12 @@
+Source: my-modules
+Maintainer: Erik Lönroth <erik.lonroth@gmail.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Section: utils
+
+Package: my-module
+Priority: extra
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}  
+Description: Modules for Lmod
+ Just some modules

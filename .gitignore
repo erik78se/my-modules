@@ -4,3 +4,8 @@ rpmbuild/RPMS
 rpmbuild/SRPM
 
 
+debian/debhelper-build-stamp
+debian/files
+debian/.debhelper
+debian/my-module.substvars
+debian/my-module

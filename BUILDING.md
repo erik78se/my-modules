@@ -9,7 +9,7 @@ Centos: https://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
 
 ## Setup build env for DEB
 ### Debian:
-    apt-get install build-essential
+    apt-get install build-essential debhelper
 
 ### Centos8
 
