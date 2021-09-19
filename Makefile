@@ -22,17 +22,17 @@ rpm: pkg-release packmodules ## Build rpm
 
 
 pkg-release: ## Generate the release file
-	@rm -f pkg-release
 	@git describe --tags --dirty --always > pkg-release
 	@echo Using release: `cat pkg-release`
 
 
-install: 
+install: pkg-release
 	@echo installing
 	@install -d $(DESTDIR)$(prefix)
 
 
 clean:
+	@rm -f pkg-release
 	@rm -f rpmbuild/SOURCES/modules.tar.gz
 
 # Display target comments in 'make help'
