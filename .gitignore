@@ -7,7 +7,7 @@ rpmbuild/SOURCES/modules.tar.gz
 debian/debhelper-build-stamp
 debian/files
 debian/.debhelper
-debian/my-module.substvars
-debian/my-module
+debian/my-modules.substvars
+debian/my-modules
 pkg-release
-debian/my-module.debhelper.log
+debian/my-modules.debhelper.log

@@ -4,7 +4,7 @@ Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.3
 Section: utils
 
-Package: my-module
+Package: my-modules
 Priority: extra
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}  
