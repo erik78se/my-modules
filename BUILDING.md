@@ -14,7 +14,7 @@ Centos: https://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
 ### Centos8
 
     # basics
-    yum -y install rpm-build redhat-rpm-config git 
+    yum -y install rpm-build redhat-rpm-config git make
     # elep
     yum -y install epel-release
     yum -y repolist
