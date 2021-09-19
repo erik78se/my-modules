@@ -7,7 +7,7 @@ Centos: https://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
 
 ## Install rpm-build
     
-    yum -y install rpm-build git
+    yum -y install rpm-build redhat-rpm-config git 
 
 ## Install epel
 https://www.cyberciti.biz/faq/how-to-enable-and-install-epel-repo-on-centos-8-x/
@@ -50,3 +50,5 @@ https://lmod.readthedocs.io/en/latest/070_standard_modules.html
     Using the /etc/profile.d directory system described earlier to create a file called z01_StdEnv.sh
 
 
+## Rpmbuild setup for centos
+https://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
